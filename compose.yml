@@ -1,0 +1,15 @@
+name: portainer_server
+services:
+  portainer_server:
+    container_name: portainer_server
+    image: portainer/portainer-ce:latest
+    restart: always
+    volumes:
+      - ./var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+
+volumes:
+  portainer_data: { driver: local }
